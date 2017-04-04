@@ -13,11 +13,19 @@ import java.util.Scanner;
  * Code adapted from Google.
  *
  * YOUR TASK: Add comments explaining how this code works!
- * 
+ *
  * @author Joel Ross & Kyungmin Lee
  */
 public class MovieDownloader {
-
+    // pre: Takes in a String movie as a parameter.
+    // post: Creates a url using the given movie parameter. Try to encode the
+    // movie into the url. If encoding of movie parameter is unsupported then
+    // return null. Try to create an HTTP connection to the created url. Get
+    // InputStream from the urlConnection. Create a StringBuffer to store data
+    // coming from InputStream. If urlConnection throws IOException then return
+    // null. Store StringBuffer as a String and modify using regex. Store movie
+    // information in array. Disconnet the urlConnection and close the
+    // reader. Return movie information as a String array.
 	public static String[] downloadMovieData(String movie) {
 
 		//construct the url for the omdbapi API
@@ -63,10 +71,10 @@ public class MovieDownloader {
 			results = results.replace("},", "},\n");
 
 			movies = results.split("\n");
-		} 
+		}
 		catch (IOException e) {
 			return null;
-		} 
+		}
 		finally {
 			if (urlConnection != null) {
 				urlConnection.disconnect();
@@ -74,7 +82,7 @@ public class MovieDownloader {
 			if (reader != null) {
 				try {
 					reader.close();
-				} 
+				}
 				catch (IOException e) {
 				}
 			}
@@ -84,13 +92,13 @@ public class MovieDownloader {
 	}
 
 
-	public static void main(String[] args) 
+	public static void main(String[] args)
 	{
 		Scanner sc = new Scanner(System.in);
 
 		boolean searching = true;
 
-		while(searching) {					
+		while(searching) {
 			System.out.print("Enter a movie name to search for or type 'q' to quit: ");
 			String searchTerm = sc.nextLine().trim();
 			if(searchTerm.toLowerCase().equals("q")){
