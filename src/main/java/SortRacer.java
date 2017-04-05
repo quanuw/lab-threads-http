@@ -40,6 +40,7 @@ public class SortRacer {
 		return nums.toArray(new Integer[0]);
 	}
 
+    // nested class for mergesort implements Runnable interface
     public static class MergeSort implements Runnable {
         public void run() {
             SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss.SSSS"); //for output
@@ -50,6 +51,7 @@ public class SortRacer {
         }
     }
 
+    // nested class for quicksort implements Runnable interface
     public static class QuickSort implements Runnable {
         public void run() {
             SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss.SSSS"); //for output
